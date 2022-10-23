@@ -1,49 +1,21 @@
 package Models;
 
-public class Worker {
-    private String Name;
-    private String Surename;
-    private String Login;
-    private String Password;
+import java.util.ArrayList;
 
+public class Worker extends User{
+    ArrayList<Client> Clients;
     public Worker(String name, String surename, String login) {
-        Name = name;
-        Surename = surename;
-        Login = login;
-        Password = null;
+        super(name, surename, login,null);
     }
 
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getSurename() {
-        return Surename;
-    }
-
-    public void setSurename(String surename) {
-        Surename = surename;
-    }
-
-    public String getLogin() {
-        return Login;
-    }
-
-    public void setLogin(String login) {
-        Login = login;
-    }
-
-    public String getPassword() {
-        return Password;
+    public Worker (String name, String surename, String login, String password, ArrayList<Client> clients) {
+        super(name, surename, login, password);
+        Clients = clients;
     }
 
     public boolean setPassword(String password) {
         if (password.length() > 8) {
-            this.Password = password;
+            super.setPassword(password);
             return true;
         }
         return false;

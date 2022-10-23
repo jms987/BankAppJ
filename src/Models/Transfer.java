@@ -2,20 +2,20 @@ package Models;
 
 import java.util.Date;
 
-public class transfer {
+public class Transfer {
     private long NumberofAccountIn;
     private long NumberofAccountOut;
     private float moneyAmount;
     private Date date;
 
-    public transfer(long numberofAccountIn, long numberofAccountOut, float moneyAmount, Date date) {
+    public Transfer(long numberofAccountIn, long numberofAccountOut, float moneyAmount, Date date) {
         NumberofAccountIn = numberofAccountIn;
         NumberofAccountOut = numberofAccountOut;
         this.moneyAmount = moneyAmount;
         this.date = date;
     }
 
-    public transfer(long numberofAccountIn, long numberofAccountOut, float moneyAmount) {
+    public Transfer(long numberofAccountIn, long numberofAccountOut, float moneyAmount) {
         NumberofAccountIn = numberofAccountIn;
         NumberofAccountOut = numberofAccountOut;
         this.moneyAmount = moneyAmount;
