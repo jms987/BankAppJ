@@ -10,8 +10,8 @@ public class Client extends User{
     private ArrayList<Transfer> history;
     private Date BornDate;
 
-    public Client(String name, String surename, String login, long numberofAccount, Date bd) {
-        super(name, surename, login,null);
+    public Client(String name, String surename, String login,String password, long numberofAccount, Date bd) {
+        super(name, surename, login,password);
         NumberofAccount = numberofAccount;
         balance = 0;
         history = new ArrayList<Transfer>();
@@ -41,6 +41,19 @@ public class Client extends User{
         return false;
     }
 
+    public void addTransfer(Transfer transfer) {
+        history.add(transfer);
+        if(transfer.getNumberofAccountIn() == NumberofAccount)
+        {
+            balance+=(transfer.getMoneyAmount());
+        }
+        else if(transfer.getNumberofAccountOut() == NumberofAccount)
+        {
+            balance-=(transfer.getMoneyAmount());
+        }
+    }
+
+    //Getters and Setters
     public boolean setPassword(String password) {
         if (password.length() > 8) {
             super.setPassword(password);
@@ -85,16 +98,5 @@ public class Client extends User{
         credits.add(credit);
     }
 
-    public void addTransfer(Transfer transfer) {
-        history.add(transfer);
-        if(transfer.getNumberofAccountIn() == NumberofAccount)
-        {
-            balance+=(transfer.getMoneyAmount());
-        }
-        else if(transfer.getNumberofAccountOut() == NumberofAccount)
-        {
-            balance-=(transfer.getMoneyAmount());
-        }
 
-    }
 }

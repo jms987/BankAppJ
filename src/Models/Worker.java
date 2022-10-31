@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Worker extends User{
     ArrayList<Client> Clients;
-    public Worker(String name, String surename, String login) {
-        super(name, surename, login,null);
+    public Worker(String name, String surename, String login,String password) {
+        super(name, surename, login,password);
     }
 
     public Worker (String name, String surename, String login, String password, ArrayList<Client> clients) {
@@ -19,5 +19,14 @@ public class Worker extends User{
             return true;
         }
         return false;
+    }
+
+    //Getters and Setters
+    public ArrayList<Client> getClients() {
+        return Clients;
+    }
+
+    public void setClients(ArrayList<Client> clients) {
+        Clients = clients;
     }
 }

@@ -13,6 +13,12 @@ public abstract class User {
         Password = password;
     }
 
+    public boolean setPassword(String password) {
+        Password = password;
+        return true;
+    }
+    //Getters and Setters
+
     public String getName() {
         return Name;
     }
@@ -41,8 +47,4 @@ public abstract class User {
         return Password;
     }
 
-    public boolean setPassword(String password) {
-        Password = password;
-        return true;
-    }
 }

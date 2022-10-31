@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Login {
+    //class to delete
     private List<Client> clients;
     private List<Worker> workers;
 
