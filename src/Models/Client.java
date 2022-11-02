@@ -5,17 +5,17 @@ import java.util.Date;
 
 public class Client extends User{
     private long NumberofAccount;
-    private float balance;
-    private ArrayList<Credit> credits;
-    private ArrayList<Transfer> history;
+    private float Balance;
+    private ArrayList<Credit> Credits;
+    private ArrayList<Transfer> History;
     private Date BornDate;
 
     public Client(String name, String surename, String login,String password, long numberofAccount, Date bd) {
         super(name, surename, login,password);
         NumberofAccount = numberofAccount;
-        balance = 0;
-        history = new ArrayList<Transfer>();
-        credits = new ArrayList<Credit>();
+        Balance = 0;
+        History = new ArrayList<Transfer>();
+        Credits = new ArrayList<Credit>();
         BornDate = bd;
     }
 
@@ -23,33 +23,37 @@ public class Client extends User{
                   ArrayList<Transfer> h,ArrayList<Credit> c, float b, Date bd) {
         super(name, surename, login,password);
         NumberofAccount = numberofAccount;
-        balance = b;
-        history = h;
-        credits = c;
+        Balance = b;
+        History = h;
+        Credits = c;
         BornDate = bd;
     }
 
+    public Client() {
+        super();
+    }
+
     public void deposit(float in) {
-        balance += in;
+        Balance += in;
     }
 
     public boolean payout(float out) {
-        if (out > balance) {
-            balance -= out;
+        if (out > Balance) {
+            Balance -= out;
             return true;
         }
         return false;
     }
 
     public void addTransfer(Transfer transfer) {
-        history.add(transfer);
+        History.add(transfer);
         if(transfer.getNumberofAccountIn() == NumberofAccount)
         {
-            balance+=(transfer.getMoneyAmount());
+            Balance +=(transfer.getMoneyAmount());
         }
         else if(transfer.getNumberofAccountOut() == NumberofAccount)
         {
-            balance-=(transfer.getMoneyAmount());
+            Balance -=(transfer.getMoneyAmount());
         }
     }
 
@@ -71,31 +75,31 @@ public class Client extends User{
     }
 
     public float getBalance() {
-        return balance;
+        return Balance;
     }
 
     public void setBalance(float balance) {
-        this.balance = balance;
+        this.Balance = balance;
     }
 
     public ArrayList<Credit> getCredits() {
-        return credits;
+        return Credits;
     }
 
     public void setCredits(ArrayList<Credit> credits) {
-        this.credits = credits;
+        this.Credits = credits;
     }
 
     public ArrayList<Transfer> getHistory() {
-        return history;
+        return History;
     }
 
     public void setHistory(ArrayList<Transfer> history) {
-        this.history = history;
+        this.History = history;
     }
 
     public void addCredit(Credit credit) {
-        credits.add(credit);
+        Credits.add(credit);
     }
 
 
