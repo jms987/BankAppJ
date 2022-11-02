@@ -6,8 +6,10 @@ import Models.Worker;
 import java.util.ArrayList;
 
 public class WorkerUI extends BaseUI {
+
+    private Worker actWorker;
     public WorkerUI(Worker worker, ArrayList<User> users) {
-        super((Worker) worker, users);
+        super(users);
     }
 
     public void menuLoop() {
@@ -16,8 +18,8 @@ public class WorkerUI extends BaseUI {
 
     public void menuText() {
         System.out.println("Witaj: "
-                + super.getActUser().getName() + "\t"
-                + super.getActUser().getSurename()
+                + actWorker.getName() + "\t"
+                + actWorker.getSurename()
                 + "\nWybierz jaką czynność chcesz zrobic.");
         System.out.println("1:\tZobacz stan konta klienta");
         System.out.println("2:\tZlec przelew z konta klienta");
