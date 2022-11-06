@@ -13,7 +13,12 @@ public abstract class User {
         Password = password;
     }
 
-    public User() {}
+    public User() {
+        Name = null;
+        Surename = null;
+        Login = null;
+        Password = null;
+    }
 
     public boolean setPassword(String password) {
         Password = password;

@@ -12,9 +12,12 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         ArrayList<User> users = new ArrayList<User>();
-        users.add(new Client("Jan","Nowak","JN111","Haslo123",1,new Date(2000,1,1)));
-        users.add(new Client("Jan","Kowalski","Jk111","Haslo456",2,new Date(1990,2,1)));
-        users.add(new Client("Maria","Nowak","MN111","Haslo789",3,new Date(1980,3,2)));
+        users.add(new Client("Jan","Nowak","JN111","Haslo123",1,
+                new Date(100,1,1)));
+        users.add(new Client("Jan","Kowalski","Jk111","Haslo456",2,
+                new Date(90,2,1)));
+        users.add(new Client("Maria","Nowak","MN111","Haslo789",3,
+                new Date(80,3,2)));
         users.add(new Worker("Andrzej","Zielinski","AZ111","PHaslo123"));
         users.add(new Worker("Marian","Zog","MZ111","PHaslo456"));
 
