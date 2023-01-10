@@ -1,5 +1,8 @@
 package Models;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Credit {
     private int number;
     private float baseValue;
@@ -7,6 +10,8 @@ public class Credit {
     private int numberofrepayment;
     private int repaymentleft;
     private float percentage;
+    private Date startedDate;
+    private Date lastDatePart;
 
     public Credit(int number, float baseValue, int numberofrepayment, float percentage) {
         this.number = number;
@@ -15,6 +20,29 @@ public class Credit {
         this.numberofrepayment = numberofrepayment;
         this.repaymentleft = numberofrepayment;
         this.percentage = percentage;
+        startedDate = new Date();
+        startedDate.setTime(System.currentTimeMillis());
+        lastDatePart = new Date();
+    }
+
+    public float calculatePart() {
+        return (actualValue / repaymentleft) * ((100 + percentage) / 1200);
+    }
+
+    public boolean addMandatoryRepayment(float money) {
+        if (money > calculatePart()) {
+            actualValue -= money;
+            repaymentleft -= 1;
+            lastDatePart.setTime(System.currentTimeMillis());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void addRepayment(float money)
+    {
+        actualValue -= money;
     }
 
     public int getNumber() {

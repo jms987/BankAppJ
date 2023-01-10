@@ -2,7 +2,6 @@ package UI;
 
 import Models.Client;
 import Models.User;
-import Models.Worker;
 
 import java.util.ArrayList;
 
@@ -26,9 +25,16 @@ public abstract class BaseUI {
         }
     }
 
+    public void menuLoop() {
+
+    }
+
     public abstract void menuLoop();
     public abstract void menuText();
 
+    public ArrayList<Client> getClients() {
+        return Clients;
+    }
     public ArrayList<Client> getClients() {
         return Clients;
     }

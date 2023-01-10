@@ -3,30 +3,30 @@ package Models;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Client extends User{
+public class Client extends User {
     private long NumberofAccount;
     private float Balance;
     private ArrayList<Credit> Credits;
     private ArrayList<Transfer> History;
     private Date BornDate;
 
-    public Client(String name, String surename, String login,String password, long numberofAccount, Date bd) {
-        super(name, surename, login,password);
+    public Client(String name, String surename, String login, String password, long numberofAccount, Date birthDate) {
+        super(name, surename, login, password);
         NumberofAccount = numberofAccount;
         Balance = 0;
         History = new ArrayList<Transfer>();
         Credits = new ArrayList<Credit>();
-        BornDate = bd;
+        BornDate = birthDate;
     }
 
-    public Client(String name, String surename, String login, long numberofAccount, String password,
-                  ArrayList<Transfer> h,ArrayList<Credit> c, float b, Date bd) {
-        super(name, surename, login,password);
+    public Client(String name, String surename, String login, String password, long numberofAccount,
+                  ArrayList<Transfer> history, ArrayList<Credit> credits, float balance, Date birthDate) {
+        super(name, surename, login, password);
         NumberofAccount = numberofAccount;
-        Balance = b;
-        History = h;
-        Credits = c;
-        BornDate = bd;
+        Balance = balance;
+        History = history;
+        Credits = credits;
+        BornDate = birthDate;
     }
 
     public Client() {
@@ -47,14 +47,36 @@ public class Client extends User{
 
     public void addTransfer(Transfer transfer) {
         History.add(transfer);
-        if(transfer.getNumberofAccountIn() == NumberofAccount)
-        {
-            Balance +=(transfer.getMoneyAmount());
+        if (transfer.getNumberofAccountIn() == NumberofAccount) {
+            Balance += (transfer.getMoneyAmount());
+        } else if (transfer.getNumberofAccountOut() == NumberofAccount) {
+            Balance -= (transfer.getMoneyAmount());
         }
-        else if(transfer.getNumberofAccountOut() == NumberofAccount)
-        {
-            Balance -=(transfer.getMoneyAmount());
+    }
+
+    public int calculateCredit(int creditPeriod) {
+        Date actDate = new Date();
+        //TODO: to check thise
+        long sixMonths = (6 * 30 * 24 * 3600);
+        sixMonths = sixMonths * 1000;
+        actDate.setTime(System.currentTimeMillis() - sixMonths);
+        actDate.setHours(0);
+        actDate.setMinutes(0);
+        actDate.setSeconds(0);
+        float sum = 0;
+        for (Transfer t : History) {
+            if (t.getNumberofAccountIn() == NumberofAccount) {
+                if (t.getDate().after(actDate)) {
+                    sum = sum + t.getMoneyAmount();
+                } else if ( t.getDate().getDate()==actDate.getDate() &&
+                            t.getDate().getYear() == actDate.getYear() &&
+                            t.getDate().getMonth() == actDate.getMonth()) {
+                    sum = sum + t.getMoneyAmount();
+                }
+            }
         }
+        Float wyn = sum / 12 * creditPeriod;
+        return wyn.intValue();
     }
 
     //Getters and Setters
@@ -101,6 +123,5 @@ public class Client extends User{
     public void addCredit(Credit credit) {
         Credits.add(credit);
     }
-
 
 }

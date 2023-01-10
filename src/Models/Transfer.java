@@ -19,7 +19,8 @@ public class Transfer {
         NumberofAccountIn = numberofAccountIn;
         NumberofAccountOut = numberofAccountOut;
         this.moneyAmount = moneyAmount;
-        this.date.setTime(System.currentTimeMillis());
+        date = new Date();
+        date.setTime(System.currentTimeMillis());
     }
 
     public long getNumberofAccountIn() {
