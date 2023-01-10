@@ -26,9 +26,8 @@ public abstract class BaseUI {
         }
     }
 
-    public void menuLoop() {
-
-    }
+    public abstract void menuLoop();
+    public abstract void menuText();
 
     public ArrayList<Client> getClients() {
         return Clients;

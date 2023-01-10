@@ -2,6 +2,7 @@ package com.company;
 
 import Models.*;
 import UI.ClientUI;
+import UI.WorkerUI;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,7 +20,7 @@ public class Main {
         users.add(new Worker("Marian","Zog","MZ111","PHaslo456"));
 
         ClientUI cl = new ClientUI( (Client) users.get(1),users);
-
+        WorkerUI wi = new WorkerUI((Worker) users.get(3),users);
     }
 
 }
