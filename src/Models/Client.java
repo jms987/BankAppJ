@@ -29,10 +29,6 @@ public class Client extends User {
         BornDate = birthDate;
     }
 
-    public Client() {
-        super();
-    }
-
     public void deposit(float in) {
         Balance += in;
     }

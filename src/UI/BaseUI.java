@@ -6,35 +6,13 @@ import Models.User;
 import java.util.ArrayList;
 
 public abstract class BaseUI {
-    private User actUser;
     private ArrayList<User> Users;
-    private ArrayList<Client> Clients;
-    private ArrayList<Worker> Workers;
-
+private ArrayList<Client> Clients;
     public BaseUI(ArrayList<User> users) {
         this.Users = users;
-        Clients = new ArrayList<Client>();
-        Workers = new ArrayList<Worker>();
-        Client c = new Client();
-        for (int i = 0; i < Users.size(); i++) {
-            if (Users.get(i).getClass() == c.getClass()) {
-                Clients.add((Client) Users.get(i));
-            } else {
-                Workers.add((Worker) Users.get(i));
-            }
-        }
-    }
-
-    public void menuLoop() {
 
     }
 
-    public abstract void menuLoop();
-    public abstract void menuText();
-
-    public ArrayList<Client> getClients() {
-        return Clients;
-    }
     public ArrayList<Client> getClients() {
         return Clients;
     }
@@ -43,13 +21,8 @@ public abstract class BaseUI {
         Clients = clients;
     }
 
-    public ArrayList<Worker> getWorkers() {
-        return Workers;
-    }
-
-    public void setWorkers(ArrayList<Worker> workers) {
-        Workers = workers;
-    }
+    public abstract void menuLoop();
+    public abstract void menuText();
 
     public ArrayList<User> getUsers() {
         return Users;
